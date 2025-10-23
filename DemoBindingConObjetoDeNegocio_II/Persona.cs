@@ -1,0 +1,69 @@
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DemoBindingConObjetoDeNegocio_II
+{
+    // Crear una clase de negocio que implemente INotifyPropertyChanged mediante "ObservableObject",
+    // de modo que notifique a la UI cuando una propiedad cambie.
+    // Esto es esencial para que el data binding funcione correctamente.
+    class Persona : ObservableObject
+    {
+        // public string Nombre { get; set; }
+        private string? _nombre;
+        public string? Nombre
+        {
+            get { return _nombre; }
+            set => SetProperty(ref _nombre, value);
+
+            //set
+            //{
+            //    if (_nombre != value)
+            //    {
+            //        _nombre = value;
+            //        NotifyPropertyChanged("Nombre"); // Notificar el cambio de propiedad
+            //    }
+            //}
+        }
+
+        // public int Edad { get; set; }
+        private int _edad;
+        public int Edad
+        {
+            get { return _edad; }
+            set => SetProperty(ref _edad, value);
+
+            //set
+            //{
+            //    if (_edad != value)
+            //    {
+            //        _edad = value;
+            //        NotifyPropertyChanged("Edad"); // Notificar el cambio de propiedad
+            //    }
+            //}
+        }
+
+        // Constructor vacío y con parámetros
+        public Persona()
+        {
+            Nombre = "";
+            Edad = 0;
+        }
+        public Persona(string nombre, int edad)
+        {
+            Nombre = nombre;
+            Edad = edad;
+        }
+
+        // Implementación de INotifyPropertyChanged
+        // 
+        // public event PropertyChangedEventHandler? PropertyChanged;
+        // public void NotifyPropertyChanged(string propertyName)
+        // {
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        // }
+    }
+}
